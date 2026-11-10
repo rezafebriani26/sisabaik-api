@@ -20,5 +20,19 @@
 - Komponen induk (`App.vue`) mengelola state utama dan mendistribusikan data ke komponen anak menggunakan **props**.
 - Komponen anak meneruskan interaksi atau aksi pengguna kembali ke komponen induk menggunakan sistem **emits**.
 
+## 4. Lampiran Screenshot Pengujian
+- **Tampilan Katalog**: 
+  > ![Katalog](./katalog.png)
+- **Empty State**: 
+  > ![Empty State](./empty-state.png)
+- **Form Invalid**: 
+  > ![Form Invalid](./form-invalid.png)
+- **Form Valid**: 
+  > ![Form Valid](./form-valid.png)
+- **Tampilan Mobile**: 
+  > ![Mobile](./mobile.png)
+- **Terminal Build**: 
+  > ![Terminal](./terminal.png)
+
 ## 5. Kesimpulan
 Seluruh komponen antarmuka, reaktivitas state, dan validasi formulir pada aplikasi SisaBaik frontend telah berfungsi dengan baik.

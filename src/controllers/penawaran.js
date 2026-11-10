@@ -4,11 +4,12 @@ import { penawaranSesiValid } from "../lib/input-auth.js";
 
 export async function daftar(req, res) {
   const filter = filterValid(req.query);
+  
   if (
     (filter.status && filter.status !== "aktif") ||
     req.query.tersedia === "false"
   ) {
-    salah(
+    throw salah(
       "Katalog publik hanya menampilkan penawaran aktif yang tersedia."
     );
   }
@@ -54,7 +55,7 @@ export async function buat(req, res) {
 
 export async function ubah(req, res) {
   const hasil = await data.simpanPenawaran(
-    penawaranSesiValid(req.body, req.pengguna),
+    penawaranSesiValid(req.body, req.pengguna, true),
     idValid(req.params.id)
   );
 
