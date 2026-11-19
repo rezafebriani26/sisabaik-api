@@ -15,10 +15,10 @@ ALTER TABLE pesanan
     DEFAULT 'belum-dibayar'
     CHECK (status_pembayaran IN ('belum-dibayar', 'dibayar', 'gratis')),
   ADD COLUMN IF NOT EXISTS dibayar_pada TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS dikonfirmasi pada TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS siap pada TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS selesai pada TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS dibatalkan pada TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS dikonfirmasi_pada TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS siap_pada TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS selesai_pada TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS dibatalkan_pada TIMESTAMPTZ,
   ADD COLUMN IF NOT EXISTS jenis_pembatalan VARCHAR(30)
     CHECK (jenis_pembatalan IN ('pembeli', 'penyedia', 'ditolak-penyedia')),
   ADD COLUMN IF NOT EXISTS alasan_pembatalan VARCHAR(500);

@@ -84,10 +84,10 @@ router.beforeEach((to) => {
   if (
     to.meta.penyediaTerverifikasi &&
     sesi.pengguna?.peran === "penyedia" &&
-    sesi.pengguna.statusVerifikasi !== "terverifikasi"
+    sesi.pengguna?.statusVerifikasi !== "terverifikasi"
   )
     return "/akun/penyedia";
-  if (["/login", "/daftar"].includes(to.path) && sesi.pengguna && !sesi.keluar)
+  if ((["/login", "/daftar"].includes(to.path)) && sesi.pengguna && !sesi.keluar)
     return "/";
 });
 

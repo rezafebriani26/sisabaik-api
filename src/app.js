@@ -16,11 +16,9 @@ import { tanganiError } from "./middleware/error-handler.js";
 const app = express();
 const produksi = process.env.NODE_ENV === "production";
 const hop = process.env.TRUST_PROXY_HOPS ?? "0";
-
 if (!["0", "1"].includes(hop)) {
   throw new Error("TRUST_PROXY_HOPS wajib 0 atau 1.");
 }
-
 app.set("trust proxy", Number(hop));
 const melaluiProxy = produksi && hop === "1";
 app.disable("x-powered-by");
@@ -36,7 +34,7 @@ app.use(
         upgradeInsecureRequests: melaluiProxy ? [] : null,
       },
     },
-  })
+  }),
 );
 
 app.use(catatRequest);
@@ -47,9 +45,9 @@ app.use("/api", (req, res, next) => {
     return next(
       new HttpError(
         415,
-        "JSON REQUIRED",
-        "Gunakan Content-Type application/json."
-      )
+        "JSON_REQUIRED",
+        "Gunakan Content-Type application/json.",
+      ),
     );
   }
   next();
@@ -100,7 +98,7 @@ if (produksi) {
     express.static(join(dist, "assets"), {
       immutable: true,
       maxAge: "1y",
-    })
+    }),
   );
   app.use(
     express.static(dist, {
@@ -109,11 +107,11 @@ if (produksi) {
           res.set("Cache-Control", "no-cache");
         }
       },
-    })
+    }),
   );
 } else {
   app.use(
-    express.static(fileURLToPath(new URL("../public/", import.meta.url)))
+    express.static(fileURLToPath(new URL("../public/", import.meta.url))),
   );
 }
 
